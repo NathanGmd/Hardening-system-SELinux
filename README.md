@@ -56,4 +56,12 @@ Si un profil SELinux est mal configuré pour un binaire en mode "Enforcing", SEL
 
 ### 3.4 Modification d’un profil Selinux
 
+```
+[ngermond@localhost /]$ ps -eZ | grep httpd
+system_u:system_r:httpd_t:s0        710 ?        00:00:00 httpd
+system_u:system_r:httpd_t:s0        734 ?        00:00:00 httpd
+system_u:system_r:httpd_t:s0        735 ?        00:00:01 httpd
+system_u:system_r:httpd_t:s0        736 ?        00:00:01 httpd
+system_u:system_r:httpd_t:s0        737 ?        00:00:01 httpd
+```
 
