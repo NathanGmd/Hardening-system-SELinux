@@ -28,4 +28,32 @@ public (active)
 
 ### 3.3 Installation d’un serveur Web
 
+```
+[ngermond@localhost ~]$ sestatus
+SELinux status:                 enabled
+SELinuxfs mount:                /sys/fs/selinux
+SELinux root directory:         /etc/selinux
+Loaded policy name:             targeted
+Current mode:                   enforcing
+Mode from config file:          enforcing
+Policy MLS status:              enabled
+Policy deny_unknown status:     allowed
+Memory protection checking:     actual (secure)
+Max kernel policy version:      33
+```
+
+SELinux dispose de trois modes :
+
+Enforcing : SELinux applique toutes les règles de sécurité. Les actions non autorisées sont bloquées et enregistrées dans les logs.
+
+Permissive : SELinux ne bloque pas les actions, mais enregistre les violations dans les logs.
+
+Disabled : SELinux est désactivé et aucune règle de sécurité n'est appliquée.
+
+Actuellement, SELinux est en mode "Enforcing", ce qui signifie que toutes les règles de sécurité sont activement appliquées.
+
+Si un profil SELinux est mal configuré pour un binaire en mode "Enforcing", SELinux bloquera l'exécution du binaire et enregistrera l'incident dans les logs. Cela peut empêcher le bon fonctionnement du service lié à ce binaire.
+
+### 3.4 Modification d’un profil Selinux
+
 
