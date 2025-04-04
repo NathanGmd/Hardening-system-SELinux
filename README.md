@@ -68,13 +68,14 @@ system_u:system_r:httpd_t:s0        736 ?        00:00:01 httpd
 system_u:system_r:httpd_t:s0        737 ?        00:00:01 httpd
 ```
 A ce moment là lorsque l'on tente de se connecter au serveur web, celui-ci est accessible.\
-Contexte des fichier apache /var/www/html
+\
+Contexte des fichier apache /var/www/html :
 ```
 [ngermond@localhost www]$ ls -Z html
 unconfined_u:object_r:httpd_sys_content_t:s0 assets
 unconfined_u:object_r:httpd_sys_content_t:s0 index.html
 ```
-Contexte des fichier créer dans srv_1 /srv/srv/srv_1
+Contexte des fichier créer dans srv_1 /srv/srv/srv_1 :
 ```
 [ngermond@localhost srv]$ ls -Z srv_1/
 unconfined_u:object_r:var_t:s0 assets
