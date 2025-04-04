@@ -117,4 +117,4 @@ Et si l'on tente à nouveau de se connecter au serveur web, ce coup ci la page i
 On aurai pu également utiliser 'chcon' pour appliquer un contexte temporaire.\
 A noter que le "restorecon" ci dessus" aurait effacé les modification temporaire que l'on aurai pu apporter avec "chcon".
 \
-Il est également possible d'utiliser sealert d'une manière différente en appliquant directement des modification en se référant aux logs directement notamment avec les fonctions "ausearch" et "audit2allow"
+Il est également possible d'utiliser sealert d'une manière différente en appliquant directement des modifications en se référant aux logs notamment avec les fonctions "ausearch" et "audit2allow"
