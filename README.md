@@ -56,6 +56,9 @@ Si un profil SELinux est mal configuré pour un binaire en mode "Enforcing", SEL
 
 ### 3.4 Modification d’un profil Selinux
 
+
+
+Contexte du service apache :
 ```
 [ngermond@localhost /]$ ps -eZ | grep httpd
 system_u:system_r:httpd_t:s0        710 ?        00:00:00 httpd
@@ -64,4 +67,22 @@ system_u:system_r:httpd_t:s0        735 ?        00:00:01 httpd
 system_u:system_r:httpd_t:s0        736 ?        00:00:01 httpd
 system_u:system_r:httpd_t:s0        737 ?        00:00:01 httpd
 ```
-
+A ce moment là lorsque l'on tente de se connecter au serveur web, celui-ci est accessible.
+Contexte des fichier apache /var/www/html
+```
+[ngermond@localhost www]$ ls -Z html
+unconfined_u:object_r:httpd_sys_content_t:s0 assets
+unconfined_u:object_r:httpd_sys_content_t:s0 index.html
+```
+Contexte des fichier créer dans srv_1 /srv/srv/srv_1
+```
+[ngermond@localhost srv]$ ls -Z srv_1/
+unconfined_u:object_r:var_t:s0 assets
+unconfined_u:object_r:var_t:s0 index.html
+```
+On constate que les étiquettes change de httpd_sys_content_t vers var_t
+On en conclus que selon l'endroit où les fichiers sont créés, le système leurs attribues des étiquette correspondantes. Reste à comprendre comment celui-ci gère l'attribution de ces fameuse étiquettes.
+```
+[core:error] [pid 744:tid 873] (13)Permission denied: [client 10.1.1.1:60325] AH00035: access to /index.html denied (filesystem path '/srv/srv/srv_1/index.html') because search permissions are missing on a component of the path
+```
+Comme il est possible de constater sur la ligne ci dessus, lorsque apache tente d'acceder a "index.html" dans le repertoire, srv_1, on vois qu'il reçois une permission denied.
