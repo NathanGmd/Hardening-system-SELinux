@@ -149,3 +149,23 @@ On aurai pu également utiliser 'chcon' pour appliquer un contexte temporaire.\
 A noter que le "restorecon" ci dessus" aurait effacé les modification temporaire que l'on aurai pu apporter avec "chcon".
 \
 Il est également possible d'utiliser sealert d'une manière différente en appliquant directement des modifications en se référant aux logs notamment avec les fonctions "ausearch" et "audit2allow"
+
+### 3.5 Durcissement de la configuration de SELinux
+Afin de durcir ma configuration de SElinux je m'appuie sur le CIS Rocky linux 9 Benchmark V2, notamment la partie faisant un focus sur SElinux :
+
+![image](https://github.com/user-attachments/assets/4befd887-1a3d-4d50-bb50-f351f3e2d8fd)
+
+On peux voir ci dessous, toutes les vérifiactions effecutées afin de durcir la configuration au mieux. J'ai uniquement laissé troubelshout disponible sur la machine afin de continuer de m'en servir.
+
+```
+[ngermond@localhost ~]$ sudo grubby --info=ALL | grep -Po '(selinux|enforcing)=0\b'
+[ngermond@localhost ~]$ sudo grep -E '^\s*SELINUXTYPE=(targeted|mls)\b' /etc/selinux/config
+SELINUXTYPE=targeted
+[ngermond@localhost ~]$ sudo sestatus | grep Loaded
+Loaded policy name:             targeted
+[ngermond@localhost ~]$ sudo ps -eZ | grep unconfined_service_t
+[ngermond@localhost ~]$ sudo rpm -q mcstrans
+package mcstrans is not installed
+[ngermond@localhost ~]$ sudo rpm -q setroubleshoot
+setroubleshoot-3.3.32-1.el9.x86_64
+```
