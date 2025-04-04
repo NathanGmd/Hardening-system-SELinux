@@ -114,4 +114,6 @@ Relabeled /srv/srv/srv_1/index.html from unconfined_u:object_r:var_t:s0 to uncon
 [ngermond@localhost srv_1]$ sudo setenforce 1
 ```
 Et si l'on tente à nouveau de se connecter au serveur web, ce coup ci la page index.html est bien chargée !\
-On aurai pu également utiliser 'chcon' pour appliquer un contexte temporaire.
+On aurai pu également utiliser 'chcon' pour appliquer un contexte temporaire.\
+\
+Il est également possible d'utiliser sealert d'une manière différente en appliquant directement des modification en se référant aux logs directement notamment avec les fonctions "ausearch" et "audit2allow"
