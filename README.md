@@ -155,7 +155,7 @@ Afin de durcir ma configuration de SElinux je m'appuie sur le CIS Rocky linux 9 
 
 ![image](https://github.com/user-attachments/assets/4befd887-1a3d-4d50-bb50-f351f3e2d8fd)
 
-On peux voir ci dessous, toutes les vérifiactions effecutées afin de durcir la configuration au mieux. J'ai uniquement laissé troubelshout disponible sur la machine afin de continuer de m'en servir.
+On peux voir ci dessous, toutes les vérifiactions effecutées afin de durcir la configuration au mieux. J'ai uniquement laissé troubleshout disponible sur la machine afin de continuer de m'en servir.
 
 ```
 [ngermond@localhost ~]$ sudo grubby --info=ALL | grep -Po '(selinux|enforcing)=0\b'
@@ -169,3 +169,12 @@ package mcstrans is not installed
 [ngermond@localhost ~]$ sudo rpm -q setroubleshoot
 setroubleshoot-3.3.32-1.el9.x86_64
 ```
+Finalement, toujours grâce à un audit lynis, l'Hardening index de ma machine trouvera un score de 74 :
+```
+  Lynis security scan details:
+
+  Hardening index : 74 [##############      ]
+  Tests performed : 268
+  Plugins enabled : 2
+```
+
