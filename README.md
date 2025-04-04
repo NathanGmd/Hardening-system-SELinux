@@ -38,13 +38,14 @@ Audit ssh par lynis du serveur :
 ```
 Configuration du firewall :
 ```
+[ngermond@localhost ssh]$ sudo firewall-cmd --list-all
 public (active)
   target: default
   icmp-block-inversion: no
   interfaces: enp0s3 enp0s8
   sources:
   services:
-  ports: 80/tcp 443/tcp 22/tcp
+  ports: 80/tcp 2222/tcp
   protocols:
   forward: yes
   masquerade: no
@@ -54,7 +55,7 @@ public (active)
   rich rules:
 ```
 
-80 et 443 ouvert pour le httpd plus tard.
+80  ouvert pour le httpd plus tard.
 
 ### 3.3 Installation d’un serveur Web
 
