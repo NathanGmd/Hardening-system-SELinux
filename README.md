@@ -6,7 +6,36 @@ Dans le cadre du renforcement de la sécurité du serveur, l’authentification 
 L’accès SSH est désormais restreint aux connexions par clé, avec l’authentification par mot de passe désactivée. Par mesure de sécurité supplémentaire, seul le port 22/TCP a été ouvert dans le pare-feu, limitant ainsi l’exposition du service SSH aux connexions non autorisées.
 
 Cette configuration permet de sécuriser efficacement l’accès au serveur tout en maintenant un niveau de flexibilité optimal pour l’administration distante.
-
+Audit ssh par lynis du serveur :
+```
+[+] SSH Support
+------------------------------------
+  - Checking running SSH daemon                               [ FOUND ]
+    - Searching SSH configuration                             [ FOUND ]
+    - OpenSSH option: AllowTcpForwarding                      [ OK ]
+    - OpenSSH option: ClientAliveCountMax                     [ OK ]
+    - OpenSSH option: ClientAliveInterval                     [ OK ]
+    - OpenSSH option: FingerprintHash                         [ OK ]
+    - OpenSSH option: GatewayPorts                            [ OK ]
+    - OpenSSH option: IgnoreRhosts                            [ OK ]
+    - OpenSSH option: LoginGraceTime                          [ OK ]
+    - OpenSSH option: LogLevel                                [ OK ]
+    - OpenSSH option: MaxAuthTries                            [ OK ]
+    - OpenSSH option: MaxSessions                             [ OK ]
+    - OpenSSH option: PermitRootLogin                         [ OK ]
+    - OpenSSH option: PermitUserEnvironment                   [ OK ]
+    - OpenSSH option: PermitTunnel                            [ OK ]
+    - OpenSSH option: Port                                    [ OK ]
+    - OpenSSH option: PrintLastLog                            [ OK ]
+    - OpenSSH option: StrictModes                             [ OK ]
+    - OpenSSH option: TCPKeepAlive                            [ OK ]
+    - OpenSSH option: UseDNS                                  [ OK ]
+    - OpenSSH option: X11Forwarding                           [ SUGGESTION ]
+    - OpenSSH option: AllowAgentForwarding                    [ OK ]
+    - OpenSSH option: AllowUsers                              [ NOT FOUND ]
+    - OpenSSH option: AllowGroups                             [ NOT FOUND ]
+```
+Configuration du firewall :
 ```
 public (active)
   target: default
